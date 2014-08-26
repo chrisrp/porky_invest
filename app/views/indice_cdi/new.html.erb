@@ -1,0 +1,10 @@
+<%= form_for :indice_cdi, url: '/indice_cdi' do |f| %>
+  <%= f.label :taxa_di %>
+  <%= f.text_field :taxa_di %>
+
+  <%= f.label :data %>
+  <%= f.text_field :data %>
+
+  <%= f.submit 'Gravar', class: 'btn btn-large btn-primary' %>  
+<% end %>
+
