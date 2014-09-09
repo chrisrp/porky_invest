@@ -14,5 +14,14 @@ Quando(/^gravo a informação$/) do
    click_button 'Gravar'
 end
 
+Entao(/^eu devo ser redirecionado para a página de taxas$/) do
+  expect(current_path).to eql indice_cdi_index_path
+end
+
+Entao(/^visualizar a taxa "(.*?)" da data "(.*?)"$/) do |taxa, data|
+ expect(page).to have_content(taxa)
+ expect(page).to have_content(data)
+end
+
 
 
