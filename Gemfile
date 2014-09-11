@@ -31,6 +31,7 @@ group :test do
   gem 'factory_girl_rails', '4.2.0'
   gem 'rspec-rails', '2.13.1'
   gem 'guard-rspec', '2.5.0'
+  gem 'timecop', '~> 0.7.1'
  end
 
 # Use ActiveModel has_secure_password
