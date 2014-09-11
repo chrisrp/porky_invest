@@ -14,3 +14,8 @@ Funcionalidade: Exibição de uma página com as taixas do dia anterior.
     Entao eu devo ser redirecionado para a página de taxas
     E visualizar a taxa "10.81" da data "2014-01-01"
 
+    Cenário: Visualizar as taxas cadastradas
+    Dado que eu não tenha taxas cadastradas
+    Quando eu visito a lista de taxas
+    Entao eu devo visualizar a mensagem "não existe taxa cadastrada."
+

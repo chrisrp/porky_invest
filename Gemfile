@@ -8,24 +8,30 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
+group :production do
+  gem 'pg'
+end
+
 group :doc do
   gem 'sdoc', '~> 0.4.0'
 end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.13.1'
-  gem 'guard-rspec', '2.5.0'
-  gem 'spring'
+ gem 'spring'
 end
 
 group :test do
+  gem 'minitest'
+  gem 'shoulda-matchers'
   gem 'cucumber-rails', require: false
   gem 'database_cleaner', github: 'bmabey/database_cleaner'
   gem 'selenium-webdriver', '2.35.1'
   gem 'capybara', '2.1.0'
   gem 'factory_girl_rails', '4.2.0'
-end
+  gem 'rspec-rails', '2.13.1'
+  gem 'guard-rspec', '2.5.0'
+ end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -1,2 +1,6 @@
+<% if @cdi %>
+  <p>taxa di: <%= format('%.2f', @cdi.taxa_di) %></p>
+<% else %>
+  <p>não existe taxa cadastrada.</p>
+<% end %>
 
-<p>taxa di: <%= format('%.2f', @cdi.taxa_di) %></p>

@@ -23,5 +23,11 @@ Entao(/^visualizar a taxa "(.*?)" da data "(.*?)"$/) do |taxa, data|
  expect(page).to have_content(data)
 end
 
+Dado(/^que eu não tenha taxas cadastradas$/) do
+    expect(IndiceCdi.all.count).to eql 0
+end
 
+Quando(/^eu visito a lista de taxas$/) do
+   visit indice_cdi_index_path
+end
 

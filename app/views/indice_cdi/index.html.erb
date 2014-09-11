@@ -3,10 +3,16 @@
     <th>data</th>
     <th>% Di</th>
   </tr>
-<% for indice in @indices  %>
-  <tr>
-    <td><%= indice.data %></td>
-    <td><%= indice.taxa_di %></td>
-  </tr>
-<% end %>
+  <% if @indices %>
+    <% for indice in @indices  %>
+      <tr>
+        <td><%= indice.data %></td>
+        <td><%= indice.taxa_di %></td>
+      </tr>
+    <% end %>
+  <% else %>
+    <tr>
+      <td colspan='2'>não existe taxa cadastrada.</td>
+    </tr>
+  <% end %>
 </table>
