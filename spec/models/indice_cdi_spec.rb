@@ -31,17 +31,29 @@ describe IndiceCdi do
     it { expect(subject.data).to eql Date.new(2014,12,31) }
   end
 
-  describe '#carregar_ultima_taxa' do
-    it { expect(IndiceCdi).to respond_to(:carregar_ultima_taxa)  }
+  describe '#carregar_da_cetip' do
+    it { expect(IndiceCdi).to respond_to(:carregar_da_cetip)  }
 
     context 'quando não já existe taxa para o dia' do
-      before do
-        FactoryGirl.create(:indice_cdi, data: Date.new(2014,9,1))
-        #terminar :'(
-      end
+      let(:taxa_do_dia) { FactoryGirl.create(:indice_cdi, data: Date.today) }
+      before { taxa_do_dia }
 
+      subject { IndiceCdi.carregar_da_cetip }
 
+      it { expect(subject).to eql taxa_do_dia }
+    end
 
+    context 'quando não existe taxa cadastrada' do
+      before { pending }
+
+      let(:taxa_de_ontem) { FactoryGirl.create(:indice_cdi, data: Date.today - 1) }
+      let(:taxa_cetip) { IndiceCdi.new(data: Date.today, taxa_di: 10.91).save }
+
+      before { taxa_de_ontem }
+
+      subject { IndiceCdi.carregar_da_cetip }
+
+      it { expect(subject).to eql taxa_cetip }
 
     end
 
