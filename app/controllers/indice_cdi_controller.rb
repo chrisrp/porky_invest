@@ -8,10 +8,12 @@ class IndiceCdiController < ApplicationController
     @indice_cdi = IndiceCdi.new(indice_cdi_params)
     @indice_cdi.save
 
-    carregar_indices
-    render :index
+    redirect_to action: 'index'
   end
 
+  def index
+    carregar_indices
+  end
 
   private
 

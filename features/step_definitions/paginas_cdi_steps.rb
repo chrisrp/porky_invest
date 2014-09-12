@@ -31,3 +31,11 @@ Quando(/^eu visito a lista de taxas$/) do
    visit indice_cdi_index_path
 end
 
+Dado(/^que eu tenha taxas cadastradas$/) do
+   FactoryGirl.create(:indice_cdi)
+end
+
+Entao(/^eu não devo visualizar a mensagem "(.*?)"$/) do |mensagem|
+  expect(page).not_to have_content(mensagem)
+end
+
