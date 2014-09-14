@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe ChupinhadorCdi do
+  let(:data) { Date.new(2014, 9, 11) }
+  let(:taxa) { 10.81 }
 
   before do
     stream = File.read("spec/support/cetip.html")
     allow(RestClient).to receive(:get).with('http://www.cetip.com.br/').and_return(stream)
- end
+  end
 
   subject { ChupinhadorCdi.new }
 
@@ -14,8 +16,8 @@ describe ChupinhadorCdi do
   describe '#chupinhar' do
     before { subject.chupinhar }
 
-    it { expect(subject.taxa).to eql 10.81 }
-    it { expect(subject.data).to eql '11/09/2014' }
+    it { expect(subject.taxa).to eql taxa }
+    it { expect(subject.data).to eql data }
   end
 
 end

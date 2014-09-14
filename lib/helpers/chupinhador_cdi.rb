@@ -15,6 +15,6 @@ class ChupinhadorCdi
   end
 
   def data
-    @data.gsub('(', '').gsub(')', '')
+    @data.gsub('(', '').gsub(')', '').to_date
   end
 end
