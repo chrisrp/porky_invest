@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 class ChupinhadorCdi
 
   def chupinhar
