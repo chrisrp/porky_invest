@@ -1,18 +1,22 @@
-<table cellspacing="0">
-  <tr>
-    <th>data</th>
-    <th>% Di</th>
-  </tr>
-  <% if @indices.count > 0 %>
-    <% for indice in @indices  %>
+
+<div id="table-container">
+  <table cellspacing="0" class="table table-hover table-bordered">
+    <tr>
+      <th>Data</th>
+      <th>Taxa DI</th>
+    </tr>
+    <% if @indices.count > 0 %>
+      <% for indice in @indices  %>
+        <tr>
+          <td><%= indice.data %></td>
+          <td><%= indice.taxa_di %></td>
+        </tr>
+      <% end %>
+    <% else %>
       <tr>
-        <td><%= indice.data %></td>
-        <td><%= indice.taxa_di %></td>
+        <td colspan='2'>não existe taxa cadastrada.</td>
       </tr>
     <% end %>
-  <% else %>
-    <tr>
-      <td colspan='2'>não existe taxa cadastrada.</td>
-    </tr>
-  <% end %>
-</table>
+  </table>
+
+</div>
