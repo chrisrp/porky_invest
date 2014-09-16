@@ -1,11 +1,22 @@
-<div class='jumbotron'> 
-  <h1>Dashboard com os  índices financeiros</h1>
-  <p>Espaço para amostra dos príncipais índices financeiros</p>
-</div>
+<div class="container theme-showcase" role="main">
+  <div class='jumbotron'> 
+    <h1>Dashboard com os  índices financeiros</h1>
+    <p>Espaço para amostra dos príncipais índices financeiros</p>
+  </div>
 
-<% if @cdi %>
-  <p>taxa di: <%= format('%.2f', @cdi.taxa_di) %></p>
-<% else %>
-  <p>não existe taxa cadastrada.</p>
-<% end %>
+  <div class"row">
+    <div class="col-sm-2">
+      <div class="panel panel-primary">
+        <div class="panel-heading">
+          <h3 class="panel-title">Taxa DI</h3>      
+        </div>
+        <div class="panel-body" style="font-size: 16px;">
+          <% if @cdi %>
+            <p>Taxa DI: <%= format('%.2f', @cdi.taxa_di) %>%</p>
+          <% else %>
+            <p>não existe taxa cadastrada.</p>
+          <% end %>
+        </div>
+      </div>
+    </div>
 
