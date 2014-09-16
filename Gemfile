@@ -11,6 +11,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'pg'
 gem 'rest-client', '~> 1.7.2'
 gem 'nokogiri', '~> 1.6.3.1'
+gem 'rails_12factor'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
