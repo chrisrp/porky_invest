@@ -1,5 +1,5 @@
 Dado(/^que eu esteja no cadastro de taxas cdi$/) do
-  pending 'lalallaa '
+  pending 'disabilitado até ter o login'
     visit new_indice_cdi_path
 end
 
