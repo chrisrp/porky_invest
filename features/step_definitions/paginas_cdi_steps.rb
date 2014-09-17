@@ -1,4 +1,5 @@
 Dado(/^que eu esteja no cadastro de taxas cdi$/) do
+  pending 'lalallaa '
     visit new_indice_cdi_path
 end
 
