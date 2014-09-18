@@ -13,6 +13,11 @@ class IndiceCdiController < ApplicationController
 
   def index
     carregar_indices
+
+    respond_to do |format|
+      format.html
+      format.json { render json: @indices.reverse }
+    end
   end
 
   private
