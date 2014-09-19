@@ -15,3 +15,9 @@ Funcionalidade: Exibição de uma página com as taixas do dia anterior.
     Quando eu acesso o dashboard
     Entao eu devo visualizar a mensagem "não existe taxa cadastrada."
 
+  Cenário: Exibir mais informações cdi
+    Dado que exista uma taxa DI de "10.80"
+    Quando eu acesso o dashboard
+    E desejo ver mais informações
+    Entao eu devo visualizar a página indice_cdi/index
+

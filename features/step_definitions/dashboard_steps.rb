@@ -18,3 +18,10 @@ Entao(/^eu devo visualizar a mensagem "(.*?)"$/) do |mensagem|
   expect(page).to have_content(mensagem)
 end
 
+Quando(/^desejo ver mais informações$/) do
+    click_link 'mais informações'
+end
+
+Entao(/^eu devo visualizar a página indice_cdi\/index$/) do
+  expect(current_path).to eql indice_cdi_index_path
+end
