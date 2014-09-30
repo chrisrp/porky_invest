@@ -17,8 +17,7 @@ context: document.body
               text : 'Histórico taxas'
             },
     series : [{
-      data : dataSource
-      ,
+      data : dataSource,
     tooltip: {
       valueDecimals: 2
     } }]
