@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe IndiceCdi do
+describe IndiceDiario do
   let(:data) { '01/01/2014' }
   let(:taxa_di) { 10.8 }
 
@@ -8,7 +8,7 @@ describe IndiceCdi do
 
   before { allow_any_instance_of(ChupinhadorCdi).to receive(:chupinhar).and_return('') }
 
-  subject { IndiceCdi.new(indice) }
+  subject { IndiceDiario.new(indice) }
 
   it { expect(subject.data).to eql Date.new(2014,1,1) }
   it { expect(subject.taxa_di).to eql taxa_di }
@@ -33,22 +33,23 @@ describe IndiceCdi do
     it { expect(subject.data).to eql Date.new(2014,12,31) }
   end
 
-  describe '#carregar_ultimo_indice' do
+  describe '#carregar_ultimo_indice_cdi' do
     context 'quando já existe taxa para o dia' do
-      let(:taxa_do_dia) { FactoryGirl.create(:indice_cdi, data: Date.today) }
+      let(:taxa_do_dia) { FactoryGirl.create(:indice_diario, data: Date.today) }
+
       before do
         allow_any_instance_of(ChupinhadorCdi).to receive(:data).and_return(Date.today)
         taxa_do_dia
       end
 
-      subject { IndiceCdi.carregar_ultimo_indice }
+      subject { IndiceDiario.carregar_ultimo_indice_cdi }
 
       it { expect(subject).to eql taxa_do_dia }
     end
 
     context 'quando não existe taxa cadastrada' do
-      let(:taxa_de_ontem) { FactoryGirl.create(:indice_cdi, data: Date.today - 1) }
-      let(:ultimo_indice) { IndiceCdi.new(data: Date.today, taxa_di: 10.91) }
+      let(:taxa_de_ontem) { FactoryGirl.create(:indice_diario, data: Date.today - 1) }
+      let(:ultimo_indice) { IndiceDiario.new(data: Date.today, taxa_di: 10.91) }
 
       before do
         taxa_de_ontem
@@ -56,7 +57,7 @@ describe IndiceCdi do
         allow_any_instance_of(ChupinhadorCdi).to receive(:data).and_return(ultimo_indice.data)
       end
 
-      subject { IndiceCdi.carregar_ultimo_indice }
+      subject { IndiceDiario.carregar_ultimo_indice_cdi }
 
       it { expect(subject.data).to eql ultimo_indice.data }
       it { expect(subject.taxa_di).to eql ultimo_indice.taxa_di }

@@ -1,5 +1,5 @@
 Dado(/^que exista uma taxa DI de "(.*?)"$/) do |taxa_di|
-  FactoryGirl.create(:indice_cdi, taxa_di: taxa_di)
+  FactoryGirl.create(:indice_diario, taxa_di: taxa_di)
 end
 
 Quando(/^eu acesso o dashboard$/) do
@@ -11,7 +11,7 @@ Entao(/^eu devo visualizar a taxa DI "(.*?)"$/) do |taxa_di|
 end
 
 Dado(/^que não exista uma taxa DI$/) do
-  IndiceCdi.all.count == 0
+  IndiceDiario.all.count == 0
 end
 
 Entao(/^eu devo visualizar a mensagem "(.*?)"$/) do |mensagem|
@@ -23,5 +23,5 @@ Quando(/^desejo ver mais informações$/) do
 end
 
 Entao(/^eu devo visualizar a página indice_cdi\/index$/) do
-  expect(current_path).to eql indice_cdi_index_path
+  expect(current_path).to eql indice_diario_index_path
 end

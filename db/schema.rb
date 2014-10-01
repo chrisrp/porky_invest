@@ -11,9 +11,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140810191715) do
+ActiveRecord::Schema.define(version: 20141001020318) do
 
-  create_table "indice_cdis", force: true do |t|
+  create_table "indices_diarios", force: true do |t|
     t.float "taxa_di"
     t.date  "data"
   end

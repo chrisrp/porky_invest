@@ -25,15 +25,15 @@ Entao(/^visualizar a taxa "(.*?)" da data "(.*?)"$/) do |taxa, data|
 end
 
 Dado(/^que eu não tenha taxas cadastradas$/) do
-    expect(IndiceCdi.all.count).to eql 0
+    expect(IndiceDiario.all.count).to eql 0
 end
 
 Quando(/^eu visito a lista de taxas$/) do
-   visit indice_cdi_index_path
+   visit indice_diario_index_path
 end
 
 Dado(/^que eu tenha taxas cadastradas$/) do
-   FactoryGirl.create(:indice_cdi)
+   FactoryGirl.create(:indice_diario)
 end
 
 Entao(/^eu não devo visualizar a mensagem "(.*?)"$/) do |mensagem|

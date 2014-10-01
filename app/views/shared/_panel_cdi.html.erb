@@ -6,7 +6,7 @@
     <div class="panel-body" style="font-size: 16px;">
       <% if @cdi %>
         <p>Taxa DI: <%= format('%.2f', @cdi.taxa_di) %>%</p>
-        <%= link_to 'mais informações', indice_cdi_index_path, form_class: 'btn btn-primary' %>
+        <%= link_to 'mais informações', indice_diario_index_path, form_class: 'btn btn-primary' %>
       <% else %>
         <p>não existe taxa cadastrada.</p>
       <% end %>

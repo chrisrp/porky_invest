@@ -1,7 +1,7 @@
 class DashboardController < ApplicationController
 
   def show
-    @cdi = IndiceCdi.last
+    @cdi = IndiceDiario.last
   end
 
 end
