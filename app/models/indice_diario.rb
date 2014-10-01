@@ -1,4 +1,5 @@
 #  taxa_di float
+#  taxa_selic float
 #  data    date
 
 class IndiceDiario < ActiveRecord::Base
