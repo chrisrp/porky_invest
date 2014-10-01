@@ -11,11 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141001020318) do
+ActiveRecord::Schema.define(version: 20141001024524) do
 
   create_table "indices_diarios", force: true do |t|
     t.float "taxa_di"
     t.date  "data"
+    t.float "taxa_selic"
   end
+
+  add_index "indices_diarios", ["data"], name: "index_indices_diarios_on_data", unique: true
 
 end
