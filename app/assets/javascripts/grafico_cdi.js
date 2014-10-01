@@ -1,7 +1,7 @@
 $(function () {
 
 $.ajax({
-  url: "/indice_cdi.json",
+  url: "/indice_diario.json",
 context: document.body
 }).done(function(data) {
   var dataSource = [];
