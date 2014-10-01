@@ -1,3 +1,5 @@
+require 'nokogiri'
+
 class ChupinhadorSelic
 
   attr_reader :taxa, :data

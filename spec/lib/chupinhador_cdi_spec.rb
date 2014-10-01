@@ -18,6 +18,15 @@ describe ChupinhadorCdi do
 
     it { expect(subject.taxa).to eql taxa }
     it { expect(subject.data).to eql data }
+
+    context 'quando ocorre erro' do
+      before do
+        allow(RestClient).to receive(:get).and_raise('algum erro')
+        expect(Rails.logger).to receive(:error)
+      end
+
+      it { expect { subject.chupinhar }.not_to raise_error  }
+    end
   end
 
 end
