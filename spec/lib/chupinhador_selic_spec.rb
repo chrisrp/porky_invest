@@ -2,6 +2,7 @@ require 'spec_helper'
 
 describe ChupinhadorSelic do
   let(:taxa) { 10.90 }
+  let(:data) { Date.new(2014, 9, 29) }
 
   before do
     stream = File.read("spec/support/bcb.html")
@@ -10,14 +11,23 @@ describe ChupinhadorSelic do
 
   subject { ChupinhadorSelic.new }
 
-  it { expect(subject).to respond_to :chupinhar }
-
   describe '#chupinhar' do
     before { subject.chupinhar }
 
     it { expect(subject.taxa).to eql taxa }
+    it { expect(subject.data).to eql data }
   end
 
+  context 'quando ocorre erro' do
+    before do
+      allow(RestClient).to receive(:get).and_raise('erro qualquer')
+      expect(Rails.logger).to receive(:error)
+    end
+
+    it { expect { subject.chupinhar }.not_to raise_error  }
+
+
+  end
 
 
 
