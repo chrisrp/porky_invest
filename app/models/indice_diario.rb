@@ -17,6 +17,8 @@ class IndiceDiario < ActiveRecord::Base
     if indice.nil?
       indice = IndiceDiario.new(data: c.data, taxa_di: c.taxa)
       indice.save
+    elsif indice.taxa_di.nil?
+      indice.update_attributes(taxa_di: c.taxa)
     end
 
     indice

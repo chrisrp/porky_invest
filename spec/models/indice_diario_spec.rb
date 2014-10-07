@@ -13,6 +13,7 @@ describe IndiceDiario do
 
   it { expect(subject.data).to eql Date.new(2014,1,1) }
   it { expect(subject.taxa_di).to eql taxa_di }
+  it { expect(subject.taxa_selic).to eql taxa_selic }
 
   describe '#valid?' do
     context 'sem data' do
@@ -41,7 +42,7 @@ describe IndiceDiario do
 
       it { expect(subject).to be_valid }
     end
-    end
+  end
 
   context 'com data pt-br' do
     let(:data) { '31/12/2014' }
@@ -63,6 +64,7 @@ describe IndiceDiario do
       it { expect(subject).to eql taxa_do_dia }
     end
 
+
     context 'quando não existe taxa cadastrada' do
       let(:taxa_de_ontem) { FactoryGirl.create(:indice_diario, data: Date.today - 1) }
       let(:ultimo_indice) { IndiceDiario.new(data: Date.today, taxa_di: 10.91) }
@@ -77,6 +79,20 @@ describe IndiceDiario do
 
       it { expect(subject.data).to eql ultimo_indice.data }
       it { expect(subject.taxa_di).to eql ultimo_indice.taxa_di }
+    end
+
+    context "quando existe selic, mas nao existe di" do
+      let(:taxa_do_dia) { FactoryGirl.create(:indice_diario, data: Date.today, taxa_selic: 10.9, taxa_di: nil) }
+
+      before do
+        allow_any_instance_of(ChupinhadorCdi).to receive(:data).and_return(Date.today)
+        allow_any_instance_of(ChupinhadorCdi).to receive(:taxa).and_return(10.83)
+        taxa_do_dia
+      end
+
+      subject { IndiceDiario.carregar_ultimo_indice_cdi }
+
+      it { expect(subject.taxa_di).to eql 10.83 }
     end
   end
 
