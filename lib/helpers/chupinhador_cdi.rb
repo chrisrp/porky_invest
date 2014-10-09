@@ -1,17 +1,7 @@
-require 'nokogiri'
+class ChupinhadorCdi < ChupinhadorIndiceBase
 
-class ChupinhadorCdi
-
-  attr_reader :taxa, :data
-
-  def chupinhar
-    url = 'http://www.cetip.com.br/'
-    page = Nokogiri::HTML(RestClient.get(url))
-
-    @taxa = extrair_taxa(page)
-    @data = extrair_data(page)
-  rescue => e
-    Rails.logger.error(e.message)
+  def url
+    'http://www.cetip.com.br/'
   end
 
   private
