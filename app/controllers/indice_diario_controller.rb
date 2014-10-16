@@ -12,18 +12,18 @@ class IndiceDiarioController < ApplicationController
   end
 
   def index
-    carregar_indices
+    @indices = carregar_indices
 
     respond_to do |format|
       format.html
-      format.json { render json: @indices.reverse }
+      format.json { render json: @indices }
     end
   end
 
   private
 
   def carregar_indices
-    @indices = IndiceDiario.last(10).reverse
+    IndiceDiario.ordenados
   end
 
   def indice_cdi_params

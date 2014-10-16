@@ -8,6 +8,8 @@ class IndiceDiario < ActiveRecord::Base
   validates :data, presence: true
   validate :taxa_di_or_taxa_selic
 
+  scope :ordenados, -> { order('data ASC') }
+
   def self.carregar_ultimo_indice_cdi
       c = ChupinhadorCdi.new
       c.chupinhar
