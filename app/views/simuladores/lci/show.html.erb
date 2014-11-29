@@ -1,0 +1,19 @@
+<%= form_for @lci do |f| %>
+  <%= f.label :taxa_di %>
+  <%= f.text_field :taxa_di %>
+
+  <%= f.label :dias %>
+  <%= f.text_field :dias %>
+
+  <%= f.label :percentual %>
+  <%= f.text_field :percentual %>
+
+  <%= f.label :valor %>
+  <%= f.text_field :valor %>
+
+  <%= f.label :montante %>
+  <%= f.text_field :montante %>
+
+  <%= f.submit 'Calcular', class: 'btn btn-large btn-primary' %>  
+<% end %>
+

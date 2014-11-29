@@ -4,6 +4,11 @@ Rails.application.routes.draw do
 
   resources :indice_diario, only: [:index]
 
+  namespace :simuladores do
+    get 'lcis' => 'lci#show'
+    post 'lcis' => 'lci#calcular'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
