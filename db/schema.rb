@@ -21,9 +21,9 @@ ActiveRecord::Schema.define(version: 20141130123510) do
 
   add_index "indices_diarios", ["data"], name: "index_indices_diarios_on_data", unique: true
 
-  create_table "users", force: true do |t|
-    t.string   "name"
-    t.string   "email"
+  create_table "usuarios", force: true do |t|
+    t.string   "nome",       limit: 50
+    t.string   "email",      limit: 50
     t.datetime "created_at"
     t.datetime "updated_at"
   end
