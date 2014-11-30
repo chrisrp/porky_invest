@@ -3,8 +3,10 @@ require 'spec_helper'
 describe Usuario do
   let(:nome) { 'chris' }
   let(:email) { '123@chris.com.br' }
+  let(:senha) { 'foobar' }
 
-  subject { Usuario.new(nome: nome, email: email) }
+
+  subject { Usuario.new(nome: nome, email: email, password: senha, password_confirmation: senha ) }
 
   describe '#valid' do
     it { expect(subject).to be_valid }
@@ -36,11 +38,24 @@ describe Usuario do
 
     context 'quando o email não é unico' do
       let(:email) { 'chris@abc.com' }
-      before  { Usuario.new(nome: 'chris', email: 'chris@abc.com').save }
+      before  { Usuario.new(nome: 'chris2', email: 'chris@abc.com', password: 'lala', password_confirmation: 'lala').save! }
 
+      it { expect(subject).not_to be_valid }
+    end
+
+    context 'quando a senha é menor que 4 chars' do
+      let(:senha) { 'foo' }
       it { expect(subject).not_to be_valid }
     end
   end
 
+
+    context 'quando o email é maiusculo' do
+      let(:email) { '123@CHRIS.COM.BR' }
+
+      before { subject.save! }
+
+      it { expect(subject.email).to eq '123@chris.com.br' }
+    end
 
 end

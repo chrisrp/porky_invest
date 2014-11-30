@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141130132042) do
+ActiveRecord::Schema.define(version: 20141130133234) do
 
   create_table "indices_diarios", force: true do |t|
     t.float "taxa_di"
@@ -22,10 +22,11 @@ ActiveRecord::Schema.define(version: 20141130132042) do
   add_index "indices_diarios", ["data"], name: "index_indices_diarios_on_data", unique: true
 
   create_table "usuarios", force: true do |t|
-    t.string   "nome",       limit: 50
-    t.string   "email",      limit: 50
+    t.string   "nome",            limit: 50
+    t.string   "email",           limit: 50
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "password_digest"
   end
 
   add_index "usuarios", ["email"], name: "index_usuarios_on_email", unique: true
