@@ -1,19 +1,30 @@
 module Simuladores
   class LciController < ApplicationController
 
-    def show
-      @lci = Simuladores::Lci.new(0,0,0,0)
+
+    def new
+      @lci = Simuladores::Lci.new
+
+      render 'show'
     end
 
-    def calcular
+    def index
+      @lci = Simuladores::Lci.new
+    end
+
+    def show
+      @lci = Simuladores::Lci.new
+    end
+
+    def create
       parametros = params[:simuladores_lci]
-      @lci = Simuladores::Lci.new(parametros['taxa_di'].to_d,
-                                  parametros['dias'].to_i,
-                                  parametros['percentual'].to_d,
-                                  parametros['valor'].to_d)
+      @lci = Simuladores::Lci.new(parametros)
       @lci.simular
 
       render :show
+    end
+
+    def calcular
     end
 
   end

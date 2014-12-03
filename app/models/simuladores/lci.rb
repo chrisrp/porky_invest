@@ -1,23 +1,16 @@
 class Simuladores::Lci
   include ActiveModel::Model
 
-  attr :montante,
+  attr_accessor :montante,
        :taxa_di,
        :dias,
        :percentual,
        :valor
 
-  def	initialize(taxa_di, dias, percentual, valor)
-    @taxa_di = taxa_di/100.0
-    @dias = dias
-    @percentual = percentual/100.0
-    @valor = valor
-  end
-
   def simular
-    taxa_desanualizada = ((@taxa_di + 1)**(1.0/252) - 1) * @percentual
+    taxa_desanualizada = ((@taxa_di.to_d/100.0 + 1)**(1.0/252) - 1) * @percentual.to_d/100.0
 
-    m = @valor * (1 + taxa_desanualizada)**@dias
+    m = @valor.to_d * (1 + taxa_desanualizada)**@dias.to_i
     @montante = m.round(2)
   end
 end

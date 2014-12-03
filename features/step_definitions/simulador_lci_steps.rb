@@ -1,5 +1,5 @@
 Dado(/^que eu esteja no simulador de LCI$/) do
-  visit simuladores_lcis_path
+  visit new_simuladores_lci_path
 end
 
 Quando(/^eu informo a taxa do cdi de "(.*?)"$/) do |taxa|

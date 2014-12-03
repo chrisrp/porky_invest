@@ -9,7 +9,7 @@ describe Simuladores::Lci do
   let(:percentual) { 100 }
   let(:valor) { 1000 }
 
-  subject { Simuladores::Lci.new(taxa, dias, percentual, valor) }
+  subject { Simuladores::Lci.new({ taxa_di: taxa, dias: dias, percentual: percentual, valor: valor }) }
 
   describe '#simular!' do
     before { subject.simular }
