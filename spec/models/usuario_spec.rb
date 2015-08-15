@@ -49,13 +49,11 @@ describe Usuario do
     end
   end
 
+  context 'quando o email é maiusculo' do
+    let(:email) { '123@CHRIS.COM.BR' }
 
-    context 'quando o email é maiusculo' do
-      let(:email) { '123@CHRIS.COM.BR' }
+    before { subject.save! }
 
-      before { subject.save! }
-
-      it { expect(subject.email).to eq '123@chris.com.br' }
-    end
-
+    it { expect(subject.email).to eq '123@chris.com.br' }
+  end
 end

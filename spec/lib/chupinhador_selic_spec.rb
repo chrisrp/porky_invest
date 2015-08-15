@@ -2,10 +2,10 @@ require 'spec_helper'
 
 describe ChupinhadorSelic do
   let(:taxa) { 10.90 }
-  let(:data) { Date.new(2014, 9, 29) }
+  let(:data) { Date.new(Time.now.year, 9, 29) }
 
   before do
-    stream = File.read("spec/support/bcb.html")
+    stream = File.read('spec/support/bcb.html')
     allow(RestClient).to receive(:get).with('http://www.bcb.gov.br/pt-br/paginas/default.aspx').and_return(stream)
   end
 
@@ -25,10 +25,5 @@ describe ChupinhadorSelic do
     end
 
     it { expect { subject.chupinhar }.not_to raise_error  }
-
-
   end
-
-
-
 end

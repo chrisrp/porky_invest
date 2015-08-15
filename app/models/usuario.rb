@@ -8,6 +8,7 @@ class Usuario < ActiveRecord::Base
                       length: { maximum: 50 },
                       format: { with: VALID_EMAIL_REGEX },
                   uniqueness: true
+
   has_secure_password
-  validates :password, length: { minimum: 4 }
+  validates :password, presence: true, length: { minimum: 4 }
 end
