@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.4'
+gem 'rails', '~> 4.1.4'
 gem 'bootstrap-sass', '~> 3.2.0.2'
 gem 'sass-rails', '~> 4.0.3'
 gem 'uglifier', '>= 1.3.0'
@@ -8,11 +8,10 @@ gem 'coffee-rails', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
-gem 'pg'
 gem 'rest-client', '~> 1.7.2'
 gem 'nokogiri', '~> 1.6.3.1'
-gem 'rails_12factor', group: :production
 gem 'jquery-turbolinks'
+gem 'bcrypt', '~> 3.1.7'
 
 group :doc do
   gem 'sdoc', '~> 0.4.0'
@@ -21,6 +20,12 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
+end
+
+group :production do
+  gem 'pg'
+  gem 'unicorn'
+  gem 'rails_12factor'
 end
 
 group :test do
@@ -36,11 +41,7 @@ group :test do
   gem 'timecop'
  end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
 # Use unicorn as the app server
-# gem 'unicorn'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
