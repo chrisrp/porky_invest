@@ -12,6 +12,7 @@ class UsuariosController < ApplicationController
     @usuario = Usuario.new(usuario_params)
 
     if @usuario.save
+      flash[:success] = 'Conta criada com sucesso!!'
       redirect_to @usuario
     else
       render 'new'

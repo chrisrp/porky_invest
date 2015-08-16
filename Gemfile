@@ -20,6 +20,7 @@ end
 group :development, :test do
   gem 'sqlite3'
   gem 'spring'
+  gem 'byebug'
 end
 
 group :production do

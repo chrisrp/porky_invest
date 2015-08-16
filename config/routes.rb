@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   root 'dashboard#show'
 
   resources :indice_diario, only: [:index]
-  resources :usuarios
+  resources :usuarios, only: [:show, :new, :create]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
